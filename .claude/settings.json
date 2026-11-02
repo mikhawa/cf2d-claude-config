@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker compose exec php bin/console:*)",
+      "Bash(docker compose exec php bin/phpunit:*)",
+      "Bash(docker compose exec php vendor/bin/php-cs-fixer:*)",
+      "Bash(docker compose exec frontend npm run:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Read(./.env.local*)",
+      "Read(./.env.prod*)",
+      "Edit(./.env.local*)",
+      "Edit(./.env.prod*)",
+      "Bash(git push:*)",
+      "Bash(*doctrine:schema:update*)",
+      "Bash(ssh:*)"
+    ]
+  }
+}
