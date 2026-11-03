@@ -66,8 +66,14 @@ Une tâche est terminée quand PHPUnit passe, que php-cs-fixer ne signale rien e
 
 ## Branches et déploiement
 
+### Les features et fixtures
+Les features sont développées sur des branches `feature/*` locales, puis poussées sur GitHub. 
+
+Les bugs sont corrigés sur des branches `fix/*` locales, puis poussées sur GitHub.
+
+### Les branches principales
 - `main` : développement
-- `preprod/v01` : un push déclenche le déploiement en préproduction (GitHub Actions → SSH VPS)
+- `preprod` : un push déclenche le déploiement en préproduction (GitHub Actions → SSH VPS)
 - `production` : un push déclenche le déploiement en production (VPS Debian 12)
 
 ## Interdits
@@ -89,8 +95,10 @@ Déléguer aux sous-agents de `.claude/agents/` (règles de choix : `.claude/mod
 
 Toute modification de code se termine par un passage de `verificateur`.
 
-## Commits
+## Commits et documentation
 
+Claude ne peut pas faire de commits lui-même, ni créer de branche, mais il doit générer des messages de documentation à chaque action. Toujours utiliser le format suivant la documentation officielle GitHub : 
+**Date** : AAAA-MM-JJ
 Format : `type(portée): description` en français (ex. `feat(client): filtre par commune`).
 Ajouter le trailer `Modele: <haiku|sonnet|opus>`.
 

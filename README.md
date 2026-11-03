@@ -41,14 +41,6 @@ Vérifiez si npm est installé avec la commande suivante :
    npm -v
    ```
 
-Installez npm si nécessaire en suivant les instructions sur le site officiel : [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
-
-Vérifiez si Python est installé avec la commande suivante :
-
-   ```bash
-   python3 --version
-   ```
-
 Installez Python si nécessaire en suivant les instructions sur le site officiel : [https://www.python.org/downloads/](https://www.python.org/downloads/)    
 
 Vérifiez si docker est installé avec la commande suivante :
