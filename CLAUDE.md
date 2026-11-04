@@ -50,7 +50,7 @@ docker compose exec frontend npm run lint
 docker compose exec frontend npm run build
 ```
 
-Raccourcis shell de l'équipe : voir `RACCOURCIS.md` (pour les humains ; Claude utilise les commandes complètes).
+Raccourcis shells de l'équipe : voir `RACCOURCIS.md` (pour les humains ; Claude utilise les commandes complètes).
 
 Une tâche est terminée quand PHPUnit passe, que php-cs-fixer ne signale rien et que `npm run lint` passe.
 
@@ -61,7 +61,7 @@ Une tâche est terminée quand PHPUnit passe, que php-cs-fixer ne signale rien e
 - Logique métier : `src/Service/` — contrôleurs et processors restent minces
 - Requêtes : uniquement dans `src/Repository/`
 - Autorisations : voters custom dans `src/Security/Voter/`, appliqués via `security:` dans `#[ApiResource]`
-- Fixtures : groupe `app` (dev/tests), groupe `prod` (données minimales de production, ex. admin initial)
+- Fixtures : groupe `app` (dev/tests), groupe `preprod` avec des données de préproduction, groupe `prod` (données minimales de production, ex. admin initial)
 - Nommage : PascalCase classes, snake_case BDD, camelCase JS
 
 ## Branches et déploiement
@@ -73,8 +73,8 @@ Les bugs sont corrigés sur des branches `fix/*` locales, puis poussées sur Git
 
 ### Les branches principales
 - `main` : développement
-- `preprod` : un push déclenche le déploiement en préproduction (GitHub Actions → SSH VPS)
-- `production` : un push déclenche le déploiement en production (VPS Debian 12)
+- `preprod` : un push déclenche le déploiement en préproduction, mode `dev` avec des fixtures de préproduction (GitHub Actions → SSH VPS protégé par mot de passe)
+- `production` : un push déclenche le déploiement en production (GitHub Actions → SSH VPS)
 
 ## Interdits
 
@@ -97,10 +97,12 @@ Toute modification de code se termine par un passage de `verificateur`.
 
 ## Commits et documentation
 
-Claude ne peut pas faire de commits lui-même, ni créer de branche, mais il doit générer des messages de documentation à chaque action. Toujours utiliser le format suivant la documentation officielle GitHub : 
-**Date** : AAAA-MM-JJ
-Format : `type(portée): description` en français (ex. `feat(client): filtre par commune`).
-Ajouter le trailer `Modele: <haiku|sonnet|opus>`.
+Claude ne peut pas faire de commits lui-même, ni créer de branche, mais il doit générer des messages de documentation à chaque action dans le dossier `documentation-dev` Toujours utiliser le format suivant :
+- Format : YYYY-MM-DD_HH-MM_Description-courte.md
+- Vérifier le dernier numéro existant avant de créer un nouveau fichier
+- Ajouter le trailer `Modele: <haiku|sonnet|opus>`.
+- Contenu minimal : date, fichier(s) modifié(s), résumé des changements, raison
+
 
 ## Documentation de référence
 
